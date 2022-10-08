@@ -25,7 +25,6 @@ import kotlinx.android.synthetic.main.activity_login.*
 
 
 class LoginActivity: AppCompatActivity() {
-    // add comment
     private lateinit var gso: GoogleSignInOptions
     private lateinit var mGoogleSignInClient: GoogleSignInClient
     private val RC_SIGN_IN = 1
@@ -43,31 +42,22 @@ class LoginActivity: AppCompatActivity() {
         editor.commit()
 
         auth = FirebaseAuth.getInstance()
-        setupGoogleLogin()
-
-        loginButton.setOnClickListener {
-            performLogin()
-        }
 
         RegisterforMedico.setOnClickListener{
             val activityIntent = Intent(this, RegistrazioneMedico::class.java)
-            //Toast.makeText(this,"FUNZIONA",Toast.LENGTH_LONG).show()
             startActivity(activityIntent)
             finish()
         }
         RegisterforCittadino.setOnClickListener{
             val activityIntent = Intent(this, RegistrazioneCittadino::class.java)
-            //Toast.makeText(this,"FUNZIONA",Toast.LENGTH_LONG).show()
             startActivity(activityIntent)
             finish()
         }
 
-        loginGoogleButton.setOnClickListener{
-            loginWithGoogle()
-        }
         loginButton.setOnClickListener{
-
+            performLogin()
         }
+
 
         loginRecoveryPassword.setOnClickListener {
             val email = loginEmailEditText.text.toString()
@@ -77,46 +67,9 @@ class LoginActivity: AppCompatActivity() {
                 FirebaseAuth.getInstance().sendPasswordResetEmail(email)
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful) {
-                            //Log.d(TAG, "Email sent.")
                             Toast.makeText(this, "Email di recupero inviata!", Toast.LENGTH_LONG).show()
                         }
                     }
-            }
-        }
-    }
-
-    private fun loginWithGoogle() {
-        val signInIntent = mGoogleSignInClient.signInIntent
-        startActivityForResult(signInIntent, RC_SIGN_IN)
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
-        if (requestCode == RC_SIGN_IN) {
-            val task: Task<GoogleSignInAccount> = GoogleSignIn.getSignedInAccountFromIntent(data)
-            try {
-                // Google Sign In was successful, authenticate with Firebase
-                val account = task.getResult(ApiException::class.java)
-                if (account != null) {
-                    googleFirebaseAuth(account)
-                }
-            } catch (e: ApiException) {
-                // Google Sign In failed, update UI appropriately
-                Toast.makeText(this, "Google sign in failed", Toast.LENGTH_LONG).show()
-            }
-        }
-    }
-
-    private fun googleFirebaseAuth(account: GoogleSignInAccount) {
-        val credential = GoogleAuthProvider.getCredential(account.idToken, null)
-        auth.signInWithCredential(credential).addOnCompleteListener {
-            if (it.isSuccessful) {
-                checkFirstAccess()
-            } else {
-                // If sign in fails, display a message to the user.
-                Toast.makeText(this, "Google sign in failed", Toast.LENGTH_LONG).show()
-                return@addOnCompleteListener
             }
         }
     }
@@ -140,11 +93,8 @@ class LoginActivity: AppCompatActivity() {
                     val editor = prefs.edit()
                     editor.putBoolean("hasProfile", true)
                     editor.commit()
-
-                    //startActivity(Intent(this@LoginActivity, MainActivity::class.java))
                     finish()
                 }else{
-                    //startAppGoogle(false)
                     startActivity(Intent(this@LoginActivity, RegistrationGoogleActivity::class.java))
                     finish()
                 }
@@ -154,16 +104,6 @@ class LoginActivity: AppCompatActivity() {
             }
         }
         ref.addListenerForSingleValueEvent(valueEventListener)
-    }
-
-
-
-    private fun setupGoogleLogin() {
-        gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(getString(R.string.default_web_client_id))
-            .requestEmail()
-            .build()
-        mGoogleSignInClient = GoogleSignIn.getClient(this, gso)
     }
 
     private fun performLogin() {
@@ -176,35 +116,26 @@ class LoginActivity: AppCompatActivity() {
         FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
             .addOnCompleteListener {
                 if(!it.isSuccessful) return@addOnCompleteListener
-                //intent = checkMail()
-                //startActivity(intent)
-                //finish()
-                //startApp()
+                val currentUser=FirebaseAuth.getInstance().currentUser
+                if(currentUser!!.isEmailVerified()){
+                  // send the user to the home page
                 Toast.makeText(this,"sei loggato con successo",Toast.LENGTH_LONG).show()
+                }
+                else{
+                    currentUser!!.sendEmailVerification()
+                        .addOnSuccessListener{
+                            Toast.makeText(this ,"check your Email , an Email of Verification has been sent to you  ",Toast.LENGTH_LONG).show()
+                            }
+                        .addOnFailureListener{
+                            e -> Toast.makeText(this,"Failed To send due to " +e.message,Toast.LENGTH_LONG).show()
+                        }
+
+                }
             }
             .addOnFailureListener {
                 Toast.makeText(this, "Errore: ${it.message}", Toast.LENGTH_LONG).show()
             }
     }
 
-    private fun checkMail(): Intent {
-        val intent: Intent
-        val user = FirebaseAuth.getInstance().currentUser
-
-        if(user!!.isEmailVerified){
-            FirebaseMessaging.getInstance().subscribeToTopic("users_topic${user.uid}")
-                .addOnCompleteListener {
-                    Log.d("LoginActivity", "Registrato al topic")
-                }
-
-            val editor = prefs.edit()
-            editor.putBoolean("hasProfile", true)
-            editor.commit()
-            intent = Intent(this, VerifyEmailActivity::class.java)
-        }
-        else {
-            intent = Intent(this, VerifyEmailActivity::class.java)
-        }
-        return intent
-    }}
+}
 
