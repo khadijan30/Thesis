@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Here4You</string>
+    <string name="Email">Email</string>
+    <string name="name">Tuo Nome</string>
+    <string name="cognome">Tuo Cognome</string>
+    <string name="Password">Inserire Password</string>
+    <string name="RecuperaPassword">Recupera Password</string>
+    <string name="Login">Login</string>
+    <string name="Registrati">Registrazione medico</string>
+    <string name="Registrati1">Registrazione cittadino</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="prova">Prova </string>
+    <string name="ordineMedici">N° Ordine Dei Medici </string>
+    <string name="configPssword">Conferma Password </string>
+    <string name ="checkbox">sei un medico</string>
+</resources>

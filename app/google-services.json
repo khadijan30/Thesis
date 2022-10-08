@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "477877441479",
+    "project_id": "here4you-f2172",
+    "storage_bucket": "here4you-f2172.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:477877441479:android:4429271d28761554dd3fe2",
+        "android_client_info": {
+          "package_name": "com.example.hereforu"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "477877441479-9rfv0aopktrijshri5ohb4p1lo5ca9hv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCXZsHFAaHyWAxuzQMGF5hwKYQNjaLmcOQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "477877441479-9rfv0aopktrijshri5ohb4p1lo5ca9hv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
