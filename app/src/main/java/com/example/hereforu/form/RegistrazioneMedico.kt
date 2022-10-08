@@ -16,6 +16,7 @@ import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
+import kotlinx.android.synthetic.main.activity_registrazione_cittadino.*
 import kotlinx.android.synthetic.main.activity_registrazione_medico.*
 import java.util.*
 
@@ -112,20 +113,10 @@ class RegistrazioneMedico : AppCompatActivity() {
         var password=RegisterPasswordEditText.text.toString();
         var confirmPassword=configPasswordEditText.text.toString();
         var numOrdine=numOrdine.text.toString();
-       if(email.isEmpty()|| name.isEmpty() || cognome.isEmpty() || password.isEmpty() ||confirmPassword.isEmpty()){
+       if(email.isEmpty()|| name.isEmpty() || cognome.isEmpty() || password.isEmpty() ||confirmPassword.isEmpty() || numOrdine.isEmpty()){
            Toast.makeText(this,"all fields are mandatory ",Toast.LENGTH_LONG).show()
            return
        }
-        //if(checkBox.isChecked){
-            if(numOrdine.isEmpty()){
-                Toast.makeText(this ," please set your professional number ",Toast.LENGTH_LONG).show()
-                return
-            }
-            // here if the numOrdine is not empty i will create a DoctorUser model
-            else{
-                //val
-            }
-      //  }
        if(confirmPassword!=password){
            Toast.makeText(this, "confirm password doesn't match to password ",Toast.LENGTH_LONG).show()
            return
@@ -136,14 +127,26 @@ class RegistrazioneMedico : AppCompatActivity() {
                 if(!it.isSuccessful){
                     return@addOnCompleteListener
                 }
+                ResetData()
+                // lo mando to activity login
+                val activityIntent = Intent(this, LoginActivity::class.java)
+                startActivity(activityIntent)
+                finish()
                 uploadPhotoToFirebase()
-                //SaverUserTodb()
                 Toast.makeText(this ,"sei registrato ",Toast.LENGTH_LONG).show()
             }
                 .addOnFailureListener{
                     Toast.makeText(this ,"Failed to create user : ${it.message}",Toast.LENGTH_LONG).show()
                 }
 
+    }
+    private fun ResetData(){
+        RegisterEmailEditTextC.setText("");
+        RegisterCognomeC.setText("");
+        RegisterNameC.setText("");
+        RegisterCognomeC.setText("");
+        RegisterPasswordEditTextC.setText("");
+        configPasswordEditTextC.setText("")
     }
 
     }
