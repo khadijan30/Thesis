@@ -12,8 +12,10 @@ import android.widget.Toast
 import com.example.hereforu.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.activity_registrazione_cittadino.*
 import kotlinx.android.synthetic.main.activity_registrazione_medico.*
@@ -128,6 +130,11 @@ return@addOnCompleteListener
 uploadPhotoToFirebase()
 //SaverUserTodb()
 Toast.makeText(this ,"sei registrato ",Toast.LENGTH_LONG).show()
+    ResetData();
+    // lo mando to activity login
+    val activityIntent = Intent(this, LoginActivity::class.java)
+    startActivity(activityIntent)
+    finish()
 }
 .addOnFailureListener{
 Toast.makeText(this ,"Failed to create user : ${it.message}",Toast.LENGTH_LONG).show()
@@ -135,6 +142,14 @@ Toast.makeText(this ,"Failed to create user : ${it.message}",Toast.LENGTH_LONG).
 
 
 }
+    private fun ResetData(){
+        RegisterEmailEditTextC.setText("");
+        RegisterCognomeC.setText("");
+        RegisterNameC.setText("");
+        RegisterCognomeC.setText("");
+        RegisterPasswordEditTextC.setText("");
+        configPasswordEditTextC.setText("")
+    }
 
 
 }
