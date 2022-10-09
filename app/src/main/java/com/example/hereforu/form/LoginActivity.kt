@@ -74,38 +74,6 @@ class LoginActivity: AppCompatActivity() {
         }
     }
 
-    private fun checkFirstAccess() {
-        val uid = FirebaseAuth.getInstance().uid ?: ""
-        val ref = FirebaseDatabase.getInstance().getReference("/users/")
-
-        val valueEventListener: ValueEventListener = object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-
-                if(dataSnapshot.child(uid).exists()){
-                    //startAppGoogle(true)
-                    FirebaseMessaging.getInstance().subscribeToTopic("users_topic$uid")
-                        .addOnCompleteListener {
-                            Log.d("LoginActivity", "Registrato al topic")
-                        }
-
-
-                    Toast.makeText(this@LoginActivity, "Google sign in SUCCESSFUL", Toast.LENGTH_LONG).show()
-                    val editor = prefs.edit()
-                    editor.putBoolean("hasProfile", true)
-                    editor.commit()
-                    finish()
-                }else{
-                    startActivity(Intent(this@LoginActivity, RegistrationGoogleActivity::class.java))
-                    finish()
-                }
-            }
-            override fun onCancelled(databaseError: DatabaseError) {
-                Toast.makeText(this@LoginActivity, "Errore: ${databaseError.message}", Toast.LENGTH_LONG).show()
-            }
-        }
-        ref.addListenerForSingleValueEvent(valueEventListener)
-    }
-
     private fun performLogin() {
         val email = loginEmailEditText.text.toString()
         val password = loginPasswordEditText.text.toString()
