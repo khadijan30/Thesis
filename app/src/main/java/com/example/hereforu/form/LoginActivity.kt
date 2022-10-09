@@ -21,6 +21,8 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.messaging.FirebaseMessaging
 import com.example.hereforu.R
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_login.*
 
 
@@ -43,37 +45,38 @@ class LoginActivity: AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
 
-        RegisterforMedico.setOnClickListener{
+        RegisterforMedico.setOnClickListener {
             val activityIntent = Intent(this, RegistrazioneMedico::class.java)
             startActivity(activityIntent)
             finish()
         }
-        RegisterforCittadino.setOnClickListener{
+        RegisterforCittadino.setOnClickListener {
             val activityIntent = Intent(this, RegistrazioneCittadino::class.java)
             startActivity(activityIntent)
             finish()
         }
 
-        loginButton.setOnClickListener{
+        loginButton.setOnClickListener {
             performLogin()
         }
 
 
         loginRecoveryPassword.setOnClickListener {
             val email = loginEmailEditText.text.toString()
-            if(email.isEmpty())
-                Toast.makeText(this, "Inserire la mail nell'apposito campo", Toast.LENGTH_LONG).show()
-            else{
-                FirebaseAuth.getInstance().sendPasswordResetEmail(email)
-                    .addOnCompleteListener { task ->
-                        if (task.isSuccessful) {
-                            Toast.makeText(this, "Email di recupero inviata!", Toast.LENGTH_LONG).show()
-                        }
+            if (email.isEmpty()) {
+                Toast.makeText(this, "Inserire la mail nell'apposito campo", Toast.LENGTH_LONG)
+                    .show()
+            } else {
+                Firebase.auth.sendPasswordResetEmail(email)
+                    .addOnSuccessListener {
+                        Toast.makeText(this, "Email di recupero inviata, se non lo trovi verifica il suo spam !", Toast.LENGTH_LONG).show()
+                    }.addOnFailureListener{
+                            e -> Toast.makeText(this,"Failed To send due to " +e.message,Toast.LENGTH_LONG).show()
                     }
             }
+
         }
     }
-
     private fun performLogin() {
         val email = loginEmailEditText.text.toString()
         val password = loginPasswordEditText.text.toString()
