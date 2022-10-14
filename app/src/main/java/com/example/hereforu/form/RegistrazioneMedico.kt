@@ -28,11 +28,7 @@ class RegistrazioneMedico : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registrazione_medico)
         dbReference=FirebaseDatabase.getInstance().getReference("Med")
-       // val value=checkBox.isChecked;
-      //  numOrdine.setEnabled(false)
-      //  if(value){
-      //      numOrdine.setEnabled(true)
-    //    }
+       // val value=checkBox.isChecked
         backtologin.setOnClickListener{
             var intent=Intent(this, LoginActivity::class.java)
             startActivity(intent)
@@ -123,30 +119,27 @@ class RegistrazioneMedico : AppCompatActivity() {
        }
 
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(email,password)
-            .addOnCompleteListener{
-                if(!it.isSuccessful){
-                    return@addOnCompleteListener
-                }
-                ResetData()
-                // lo mando to activity login
-                val activityIntent = Intent(this, LoginActivity::class.java)
-                startActivity(activityIntent)
-                finish()
+            .addOnSuccessListener{
                 uploadPhotoToFirebase()
                 Toast.makeText(this ,"sei registrato ",Toast.LENGTH_LONG).show()
+                //ResetData();
+                val activityIntent = Intent(this, LoginActivity::class.java)
+                startActivity(activityIntent)
             }
+
                 .addOnFailureListener{
                     Toast.makeText(this ,"Failed to create user : ${it.message}",Toast.LENGTH_LONG).show()
                 }
 
     }
     private fun ResetData(){
-        RegisterEmailEditTextC.setText("");
-        RegisterCognomeC.setText("");
-        RegisterNameC.setText("");
-        RegisterCognomeC.setText("");
-        RegisterPasswordEditTextC.setText("");
-        configPasswordEditTextC.setText("")
+        RegisterEmailEditText.setText("");
+        RegisterCognome.setText("");
+        RegisterName.setText("");
+        RegisterCognome.setText("");
+        RegisterPasswordEditText.setText("");
+        configPasswordEditText.setText("")
+        numOrdine.setText("")
     }
 
     }
