@@ -1,11 +1,5 @@
 package com.example.hereforu.models
 
-class CitizenUser(
-    uid: String,
-    name: String,
-    cognome: String,
-    email: String,
-    profileImagePath: String
-) {
-    constructor() : this("","","","","")
+class CitizenUser(val uid:String,val name:String,val cognome:String,val email:String, val profileImagePath:String){
+
 }
