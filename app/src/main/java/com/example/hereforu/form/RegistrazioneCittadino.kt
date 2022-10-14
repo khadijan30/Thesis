@@ -128,7 +128,6 @@ if(!it.isSuccessful){
 return@addOnCompleteListener
 }
 uploadPhotoToFirebase()
-//SaverUserTodb()
 Toast.makeText(this ,"sei registrato ",Toast.LENGTH_LONG).show()
     ResetData();
     // lo mando to activity login
