@@ -18,6 +18,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.activity_registrazione_cittadino.*
 import kotlinx.android.synthetic.main.activity_registrazione_medico.*
+import com.example.hereforu.models.DoctorUser
 import java.util.*
 
 class RegistrazioneMedico : AppCompatActivity() {
@@ -91,7 +92,7 @@ class RegistrazioneMedico : AppCompatActivity() {
                 .build()
             userDB!!.updateProfile(profileUpdate)
         }
-        val citizenMed=Citizen(uid,RegisterName.text.toString(),RegisterCognome.text.toString(),RegisterEmailEditText.text.toString(),numOrdine.text.toString(),profileImageUrl)
+        val citizenMed=DoctorUser(uid,RegisterName.text.toString(),RegisterCognome.text.toString(),RegisterEmailEditText.text.toString(),numOrdine.text.toString(),profileImageUrl)
         ref.setValue(citizenMed)
             .addOnSuccessListener {
                 Log.d("Register Activity","userd Adde")
@@ -143,4 +144,3 @@ class RegistrazioneMedico : AppCompatActivity() {
     }
 
     }
-class Citizen(val uid:String,val name:String,val cognome:String,val email:String, val numOrdine:String ,val profileImagePath:String)
