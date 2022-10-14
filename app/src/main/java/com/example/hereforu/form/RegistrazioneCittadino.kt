@@ -19,6 +19,7 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.activity_registrazione_cittadino.*
 import kotlinx.android.synthetic.main.activity_registrazione_medico.*
+import com.example.hereforu.models.CitizenUser
 import java.util.*
 
 
@@ -98,7 +99,7 @@ val ref=FirebaseDatabase.getInstance().getReference("/users/$uid") // i create d
             .build()
         userDB!!.updateProfile(profileUpdate)
     }
-val citizenusers=Citizen2(uid,RegisterNameC.text.toString(),RegisterCognomeC.text.toString(),RegisterEmailEditTextC.text.toString(),profileImageUrl)
+val citizenusers= CitizenUser(uid,RegisterNameC.text.toString(),RegisterCognomeC.text.toString(),RegisterEmailEditTextC.text.toString(),profileImageUrl)
 ref.setValue(citizenusers)
 .addOnSuccessListener {
 Log.d("Register Activity","userd Adde")
@@ -153,4 +154,3 @@ Toast.makeText(this ,"Failed to create user : ${it.message}",Toast.LENGTH_LONG).
 
 }
 
-class Citizen2(val uid:String,val name:String,val cognome:String,val email:String, val profileImagePath:String)
