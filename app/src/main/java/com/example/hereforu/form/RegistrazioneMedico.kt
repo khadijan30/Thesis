@@ -123,7 +123,7 @@ class RegistrazioneMedico : AppCompatActivity() {
             .addOnSuccessListener{
                 uploadPhotoToFirebase()
                 Toast.makeText(this ,"sei registrato ",Toast.LENGTH_LONG).show()
-                //ResetData();
+                ResetData();
                 val activityIntent = Intent(this, LoginActivity::class.java)
                 startActivity(activityIntent)
             }
