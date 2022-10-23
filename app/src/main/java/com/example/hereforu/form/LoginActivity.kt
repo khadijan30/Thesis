@@ -4,24 +4,16 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount
+import com.example.hereforu.R
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.google.android.gms.common.api.ApiException
-import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.GoogleAuthProvider
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
-import com.google.firebase.messaging.FirebaseMessaging
-import com.example.hereforu.R
+import com.google.firebase.auth.FirebaseUserMetadata
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_login.*
 
@@ -91,6 +83,14 @@ class LoginActivity: AppCompatActivity() {
                 if(currentUser!!.isEmailVerified()){
                   // send the user to the home page
                 Toast.makeText(this,"sei loggato con successo",Toast.LENGTH_LONG).show()
+                    //qui dobbiamo mettere distinzione per aprire home cittadino o home medico
+                    //val db=currentUser.providerData.toString()
+                   // Toast.makeText(this, db, Toast.LENGTH_LONG).show()
+
+                    val activityIntent = Intent(this, HomeCittadino::class.java)
+                    startActivity(activityIntent)
+                    finish()
+
                 }
                 else{
                     currentUser!!.sendEmailVerification()
@@ -106,6 +106,10 @@ class LoginActivity: AppCompatActivity() {
             .addOnFailureListener {
                 Toast.makeText(this, "Errore: ${it.message}", Toast.LENGTH_LONG).show()
             }
+    }
+
+    override fun onBackPressed() {
+// empty so nothing happens
     }
 
 }

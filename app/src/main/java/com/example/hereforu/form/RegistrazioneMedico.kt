@@ -29,6 +29,7 @@ class RegistrazioneMedico : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registrazione_medico)
         dbReference=FirebaseDatabase.getInstance().getReference("Med")
+       // Toast.makeText(this, dbReference.toString(), Toast.LENGTH_LONG).show()
        // val value=checkBox.isChecked
         backtologin.setOnClickListener{
             var intent=Intent(this, LoginActivity::class.java)

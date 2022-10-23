@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/MENU_1"
+        android:icon="@drawable/ic_logouticon"
+        android:title="logout"
+    app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/MENU_2"
+        android:title="Cerca appuntamento"/>
+
+    <item
+        android:id="@+id/MENU_3"
+        android:title="My doctor"/>
+
+    <item
+        android:id="@+id/MENU_4"
+        android:title="Le mie recensioni"/>
+
+    <item
+        android:id="@+id/MENU_5"
+        android:title="Modifiche profilo"/>
+
+</menu>
