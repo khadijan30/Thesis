@@ -8,7 +8,8 @@ package com.example.hereforu.models
      val cognome: String,
      val email: String,
      val numerOrdine:String,
-     val profileImagePath: String)
+     val profileImagePath: String,
+     val identificativo:String)
  {
 
  }

@@ -99,7 +99,7 @@ val ref=FirebaseDatabase.getInstance().getReference("/users/$uid") // i create d
             .build()
         userDB!!.updateProfile(profileUpdate)
     }
-val citizenusers= CitizenUser(uid,RegisterNameC.text.toString(),RegisterCognomeC.text.toString(),RegisterEmailEditTextC.text.toString(),profileImageUrl)
+val citizenusers= CitizenUser(uid,RegisterNameC.text.toString(),RegisterCognomeC.text.toString(),RegisterEmailEditTextC.text.toString(),profileImageUrl,"2")
 ref.setValue(citizenusers)
 .addOnSuccessListener {
 Log.d("Register Activity","userd Adde")

@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.hereforu.R
@@ -12,8 +13,12 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUserMetadata
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
+import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_login.*
 
@@ -72,26 +77,46 @@ class LoginActivity: AppCompatActivity() {
     private fun performLogin() {
         val email = loginEmailEditText.text.toString()
         val password = loginPasswordEditText.text.toString()
-        if(email.isEmpty() || password.isEmpty()){
-            Toast.makeText(this, "Per favore, devi riempire tutti i campi", Toast.LENGTH_LONG).show()
+        var identificativo: String = ""
+        if (email.isEmpty() || password.isEmpty()) {
+            Toast.makeText(this, "Per favore, devi riempire tutti i campi", Toast.LENGTH_LONG)
+                .show()
             return
         }
         FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
             .addOnCompleteListener {
-                if(!it.isSuccessful) return@addOnCompleteListener
-                val currentUser=FirebaseAuth.getInstance().currentUser
-                if(currentUser!!.isEmailVerified()){
-                  // send the user to the home page
-                Toast.makeText(this,"sei loggato con successo",Toast.LENGTH_LONG).show()
-                    //qui dobbiamo mettere distinzione per aprire home cittadino o home medico
-                    //val db=currentUser.providerData.toString()
-                   // Toast.makeText(this, db, Toast.LENGTH_LONG).show()
+                if (!it.isSuccessful) return@addOnCompleteListener
+                val currentUser = FirebaseAuth.getInstance().currentUser
+                if (currentUser!!.isEmailVerified()) {
+                    // send the user to the home page
+                    Toast.makeText(this, "sei loggato con successo", Toast.LENGTH_LONG).show()
+                    val uid = FirebaseAuth.getInstance().currentUser?.uid
+                    val db = FirebaseDatabase.getInstance().reference
+                    val uidRef = db.child("users").child(uid.toString())
+                    val valueEventListener = object : ValueEventListener {
+                        override fun onDataChange(snapshot: DataSnapshot) {
+                            identificativo =
+                                snapshot.child("identificativo").getValue<String>().toString()
+                            if (identificativo == "2") {
+                                startActivity(
+                                    Intent(
+                                        this@LoginActivity,
+                                        HomeCittadino::class.java
+                                    )
+                                );
+                            } else {
+                                startActivity(Intent(this@LoginActivity, HomeMedico::class.java));
+                            }
+                        }
 
-                    val activityIntent = Intent(this, HomeCittadino::class.java)
-                    startActivity(activityIntent)
-                    finish()
-
+                        override fun onCancelled(databaseError: DatabaseError) {
+                            Log.d("TAG", databaseError.getMessage())
+                        }
+                    }
+                    uidRef.addListenerForSingleValueEvent(valueEventListener)
                 }
+
+
                 else{
                     currentUser!!.sendEmailVerification()
                         .addOnSuccessListener{

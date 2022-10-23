@@ -28,7 +28,7 @@ class RegistrazioneMedico : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registrazione_medico)
-        dbReference=FirebaseDatabase.getInstance().getReference("Med")
+        dbReference=FirebaseDatabase.getInstance().getReference("users")
        // Toast.makeText(this, dbReference.toString(), Toast.LENGTH_LONG).show()
        // val value=checkBox.isChecked
         backtologin.setOnClickListener{
@@ -83,7 +83,7 @@ class RegistrazioneMedico : AppCompatActivity() {
     private fun SaverUserTodb(profileImageUrl:String,defaultImage: Boolean ){
         // i will verify if the user iud is not null
         val uid =FirebaseAuth.getInstance().uid?:""
-        val ref=FirebaseDatabase.getInstance().getReference("/Med/$uid") // i create directory user and for each user has own directory $uid
+        val ref=FirebaseDatabase.getInstance().getReference("/users/$uid") // i create directory user and for each user has own directory $uid
         // here i will create the Med ... but i have to distinguere btw cittaddino and doctor
         // for the moment i will create a cittadino Med
         if(defaultImage){
@@ -93,7 +93,7 @@ class RegistrazioneMedico : AppCompatActivity() {
                 .build()
             userDB!!.updateProfile(profileUpdate)
         }
-        val citizenMed=DoctorUser(uid,RegisterName.text.toString(),RegisterCognome.text.toString(),RegisterEmailEditText.text.toString(),numOrdine.text.toString(),profileImageUrl)
+        val citizenMed=DoctorUser(uid,RegisterName.text.toString(),RegisterCognome.text.toString(),RegisterEmailEditText.text.toString(),numOrdine.text.toString(),profileImageUrl,"1")
         ref.setValue(citizenMed)
             .addOnSuccessListener {
                 Log.d("Register Activity","userd Adde")
