@@ -11,6 +11,9 @@
         android:theme="@style/Theme.HereForU"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".form.UserProfile"
+            android:exported="false" />
+        <activity
             android:name=".form.HomeMedico"
             android:exported="false" />
         <activity
