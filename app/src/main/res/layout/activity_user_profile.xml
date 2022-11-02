@@ -20,23 +20,24 @@
             android:layout_centerVertical="true"/>
 
             <TextView
-                android:id="@+id/full_name"
+                android:id="@+id/NameProfile"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:text="Giacomo"
+                android:text=""
                 android:textSize="20sp"
                 android:layout_toRightOf="@id/profile_image"
                 android:layout_centerVertical="true"
                 android:includeFontPadding="false"
                 android:layout_marginLeft="10dp" />
         <TextView
+            android:id="@+id/description"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:text="Cittadino"
             android:includeFontPadding="false"
             android:textSize="14sp"
             android:layout_toRightOf="@id/profile_image"
-            android:layout_below="@id/full_name"
+            android:layout_below="@id/NameProfile"
             android:layout_marginLeft="10dp" />
 
 </RelativeLayout>
@@ -88,7 +89,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="20dp"
-        android:marginOF>
+       >
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/full_name_profile"
