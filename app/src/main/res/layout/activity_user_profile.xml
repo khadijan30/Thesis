@@ -11,7 +11,8 @@
     android:layout_width="match_parent"
     android:layout_height="300dp"
     android:padding="20dp"
-        android:background="@color/azzurro">
+    android:background="@color/azzurro">
+
         <ImageView
             android:id="@+id/profile_image"
             android:layout_width="100dp"
