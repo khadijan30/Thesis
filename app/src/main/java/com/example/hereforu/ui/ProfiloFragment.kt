@@ -1,5 +1,6 @@
 package com.example.hereforu.ui
-
+import android.content.Context
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -7,7 +8,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.example.hereforu.R
+import com.example.hereforu.form.HomeMedico
+import com.example.hereforu.form.RegistrazioneCittadino
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -18,6 +22,7 @@ import kotlinx.android.synthetic.main.activity_user_profile.*
 import kotlinx.android.synthetic.main.activity_user_profile.NameProfile
 import kotlinx.android.synthetic.main.fragment_profilo.*
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.fragment_profilo.view.*
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -37,11 +42,11 @@ class ProfiloFragment : Fragment() {
     var uid = FirebaseAuth.getInstance().currentUser?.uid
     val db = FirebaseDatabase.getInstance().reference
     val uidRef = db.child("users").child(uid.toString())
-    var fullname:String="";
-    var description:String="";
-    var srcImageProfile:String="";
-    var cognome:String=""
-    var email:String=""
+    var fullname: String = "";
+    var description: String = "";
+    var srcImageProfile: String = "";
+    var cognome: String = ""
+    var email: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,46 +54,60 @@ class ProfiloFragment : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
-        val valueEventListener = object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                srcImageProfile=snapshot.child("profileImagePath").getValue<String>().toString()
-                Picasso.with(this@ProfiloFragment.context).load(srcImageProfile).into(imageProfile)
-                description=snapshot.child("identificativo").getValue<String>().toString();
-                if(description=="2"){
-                    WHO.setText("User")
-                }
-                else{
-                    WHO.setText("DOCTOR")
-                }
-                email= snapshot.child("email").getValue<String>().toString()
-                myEmail.setText(email)
-                fullname =
-                    snapshot.child("name").getValue<String>().toString()
-                    NameProfile.setText(fullname)
-                    myName.setText(fullname)
-                cognome =
-                    snapshot.child("cognome").getValue<String>().toString()
-                    myCognome.setText(cognome)
 
-            }
+        /* if(savedInstanceState==null){
+            SupportFr.commit{
 
-            override fun onCancelled(databaseError: DatabaseError) {
-                Log.d("TAG", databaseError.getMessage())
+            } */
+
+
+    val valueEventListener = object : ValueEventListener {
+        override fun onDataChange(snapshot: DataSnapshot) {
+            srcImageProfile = snapshot.child("profileImagePath").getValue<String>().toString()
+            Picasso.with(this@ProfiloFragment.context).load(srcImageProfile).into(imageProfile)
+            description = snapshot.child("identificativo").getValue<String>().toString();
+            if (description == "2") {
+                WHO.setText("User")
+            } else {
+                WHO.setText("DOCTOR")
             }
+            email = snapshot.child("email").getValue<String>().toString()
+            myEmail.setText(email)
+            fullname =
+                snapshot.child("name").getValue<String>().toString()
+            NameProfile.setText(fullname)
+            myName.setText(fullname)
+            cognome =
+                snapshot.child("cognome").getValue<String>().toString()
+            myCognome.setText(cognome)
+
         }
-        uidRef.addListenerForSingleValueEvent(valueEventListener)
-        // Not Working
-        //Update.setOnClickListener{
-            //if(email!=myEmail.text.toString()){
-                //uidRef.child("email").setValue(myEmail.text.toString())
-            //}
-        //}
+
+        override fun onCancelled(databaseError: DatabaseError) {
+            Log.d("TAG", databaseError.getMessage())
+        }
     }
-    private fun update(){
+
+    uidRef.addListenerForSingleValueEvent(valueEventListener)
+    // Not Work
+       // prova4.setOnClickListener()
+      //  {
+           // Toast.makeText(@Profi, "Inserire la mail nell'apposito campo", Toast.LENGTH_LONG)
+            //    .show()
+            //startActivity(new Intent(this@ProfiloFragment, HomeMedico::class.java))
+
+            /* if (email != myEmail.text.toString()) {
+                 uidRef.child("email").setValue(myEmail.text.toString())
+             }*/
+      //  }
+
+}
+
+    /*private fun update(){
         if(email!=myEmail.text.toString()){
             uidRef.child("email").setValue(myEmail.text.toString())
-        }
-    }
+        } */
+    //}
 
 
     override fun onCreateView(
@@ -97,11 +116,15 @@ class ProfiloFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_profilo, container, false)
+
+
     }
 
     companion object {
         /**
          * Use this factory method to create a new instance of
+        if(email!=myEmail.text.toString()){
+        uidRef.child("email").setValue(myEmail.text.toString())
          * this fragment using the provided parameters.
          *
          * @param param1 Parameter 1.
@@ -118,4 +141,5 @@ class ProfiloFragment : Fragment() {
                 }
             }
     }
+
 }
