@@ -75,6 +75,9 @@ class HomeCittadino : AppCompatActivity() {
             }
             R.id.MENU_2 -> {
                 Toast.makeText(this, "cliccato menu 2", Toast.LENGTH_LONG).show()
+                val activityIntent = Intent(this, PopUpListAnnouncementActivity::class.java)
+                startActivity(activityIntent)
+                finish()
 
             }
             R.id.MENU_3 -> {

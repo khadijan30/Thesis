@@ -13,6 +13,30 @@
         android:theme="@style/Theme.HereForU"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".form.Annuncio"
+            android:exported="false" />
+        <activity
+            android:name=".form.AnnouncementActivity"
+            android:exported="false" />
+        <activity
+            android:name=".form.PopUpListAnnouncementActivity"
+            android:exported="false" />
+        <activity
+            android:name=".models.AnnouncementShowcase"
+            android:exported="false" />
+        <activity
+            android:name=".models.Annuncio"
+            android:exported="false" />
+        <activity
+            android:name=".form.MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".models.Profilo"
+            android:exported="false" />
+        <activity
+            android:name=".form.AnnuncioMedico"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="false" />
         <activity
@@ -41,8 +65,8 @@
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".form.LoginActivity"
-            android:windowSoftInputMode="adjustPan"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".IntroActivity"
             android:exported="true"
