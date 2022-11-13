@@ -1,10 +1,15 @@
 package com.example.hereforu.ui
+import android.app.Activity
+import android.content.ContentValues.TAG
 import android.content.Context
 import android.content.Intent
+import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import android.text.style.UpdateAppearance
 import android.util.Log
+import com.google.firebase.storage.FirebaseStorage
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -23,6 +28,7 @@ import kotlinx.android.synthetic.main.activity_user_profile.*
 import kotlinx.android.synthetic.main.activity_user_profile.NameProfile
 import kotlinx.android.synthetic.main.fragment_profilo.*
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.activity_registrazione_cittadino.*
 import kotlinx.android.synthetic.main.fragment_profilo.view.*
 
 
@@ -95,8 +101,63 @@ class ProfiloFragment : Fragment() {
     // handling the update button
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-         // here i'll manage the update profile on db
+        var uid = FirebaseAuth.getInstance().currentUser?.uid
+        val db = FirebaseDatabase.getInstance().reference
+        val uidRef = db.child("users").child(uid.toString())
+        var email: String="";
+        var cognome:String="";
+        var name:String="";
+
+        // ricavo prima i dati
+        val valueEventListener = object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                srcImageProfile = snapshot.child("profileImagePath").getValue<String>().toString()
+                Picasso.with(this@ProfiloFragment.context).load(srcImageProfile).into(imageProfile)
+                email = snapshot.child("email").getValue<String>().toString()
+                name = snapshot.child("name").getValue<String>().toString()
+                cognome = snapshot.child("cognome").getValue<String>().toString()
+            }
+            override fun onCancelled(databaseError: DatabaseError) {
+                Log.d("TAG", databaseError.getMessage())
+            }
+        }
+        uidRef.addListenerForSingleValueEvent(valueEventListener)
+
+        // Update button clicced
+        prova4.setOnClickListener() {
+            if (myEmail.text.toString()!=email) {
+                // update email dal firebasse system and realtime database
+                val user = FirebaseAuth.getInstance().currentUser
+                user!!.updateEmail(myEmail.text.toString())
+                    .addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+                            Log.d(TAG, "User email address updated.")
+                            // update
+                            uidRef.child("email").setValue(myEmail.text.toString())
+                            myEmail.setText(myEmail.text.toString())
+                            // send email verification
+                            user!!.sendEmailVerification()
+                                .addOnSuccessListener{
+                                    Toast.makeText(this@ProfiloFragment.requireContext() ,"email updated,an Email of Verification has been sent to you  ",Toast.LENGTH_LONG).show()
+                                }
+                                .addOnFailureListener{
+                                        e -> Toast.makeText(this@ProfiloFragment.requireContext(),"Failed To send due to " +e.message,Toast.LENGTH_LONG).show()
+                                }
+                        }
+                    }
+            }
+            if(myCognome.text.toString()!=cognome){
+                // update the real time database
+                uidRef.child("cognome").setValue(myCognome.text.toString())
+                myCognome.setText(myCognome.text.toString())
+            }
+            if(myName.text.toString()!=name){
+                uidRef.child("name").setValue(myName.text.toString())
+                myName.setText(myName.text.toString())
+            }
+        }
     }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
