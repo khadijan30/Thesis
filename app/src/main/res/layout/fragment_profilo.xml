@@ -18,15 +18,25 @@
             android:layout_width="match_parent"
             android:layout_height="300dp"
             android:padding="20dp"
-            android:background="@color/azzurro">
-
-
-            <ImageView
+            android:background="@color/azzurro"
+            >
+            <!--<ImageView
                 android:id="@+id/imageProfile"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_centerVertical="true"
                 android:src="@drawable/ic_profile" />
+                -->
+
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imageProfile"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:layout_marginTop="60dp"
+                android:src="@drawable/ic_profile"
+                app:civ_border_color="#FF000000"
+                app:civ_border_width="2dp" />
 
             <TextView
                 android:id="@+id/NameProfile"
@@ -142,31 +152,28 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/textView1"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0"
-                android:gravity="center"
-                android:text=""
-                android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="131dp"
                 android:layout_weight="1"
-                android:gravity="center|bottom"
-                android:orientation="vertical">
+                android:gravity="center|bottom">
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/prova4"
                     android:layout_width="145dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal|center"
-
                     android:onClick="update"
-
                     android:text="Update" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:text="Update Foto"
+                    android:id="@+id/UpdateFoto"
+                    android:layout_width="145dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|center"
+                   />
             </LinearLayout>
 
         </LinearLayout>
