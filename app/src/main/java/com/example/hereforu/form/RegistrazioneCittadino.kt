@@ -111,11 +111,11 @@ Toast.makeText(this,"Impossible add the user ${it.message}",Toast.LENGTH_LONG).s
 
 private fun handelRegistration() {
 var email=RegisterEmailEditTextC.text.toString()
-var name=RegisterNameC.text.toString();
-var cognome=RegisterCognomeC.text.toString();
-var password=RegisterPasswordEditTextC.text.toString();
-var confirmPassword=configPasswordEditTextC.text.toString();
-if(email.isEmpty()|| name.isEmpty() || cognome.isEmpty() || password.isEmpty() ||confirmPassword.isEmpty()){
+var name=RegisterNameC.text.toString()
+    var cognome=RegisterCognomeC.text.toString()
+    var password=RegisterPasswordEditTextC.text.toString()
+    var confirmPassword=configPasswordEditTextC.text.toString()
+    if(email.isEmpty()|| name.isEmpty() || cognome.isEmpty() || password.isEmpty() ||confirmPassword.isEmpty()){
 Toast.makeText(this,"all fields are mandatory ",Toast.LENGTH_LONG).show()
 return
 }
@@ -130,7 +130,7 @@ return@addOnCompleteListener
 }
 uploadPhotoToFirebase()
 Toast.makeText(this ,"sei registrato ",Toast.LENGTH_LONG).show()
-    ResetData();
+    ResetData()
     // lo mando to activity login
     val activityIntent = Intent(this, LoginActivity::class.java)
     startActivity(activityIntent)
@@ -143,11 +143,11 @@ Toast.makeText(this ,"Failed to create user : ${it.message}",Toast.LENGTH_LONG).
 
 }
     private fun ResetData(){
-        RegisterEmailEditTextC.setText("");
-        RegisterCognomeC.setText("");
-        RegisterNameC.setText("");
-        RegisterCognomeC.setText("");
-        RegisterPasswordEditTextC.setText("");
+        RegisterEmailEditTextC.setText("")
+        RegisterCognomeC.setText("")
+        RegisterNameC.setText("")
+        RegisterCognomeC.setText("")
+        RegisterPasswordEditTextC.setText("")
         configPasswordEditTextC.setText("")
     }
 
