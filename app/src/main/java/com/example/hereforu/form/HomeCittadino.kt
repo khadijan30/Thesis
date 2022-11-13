@@ -11,7 +11,8 @@ import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import com.example.hereforu.R
 import com.example.hereforu.ui.ProfiloFragment
-import com.example.hereforu.ui.fragment_home
+import com.example.hereforu.ui.fragment_home_cittadino
+import com.example.hereforu.ui.fragment_home_medico
 import com.example.hereforu.ui.fragment_notifiche
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
@@ -26,12 +27,12 @@ class HomeCittadino : AppCompatActivity() {
        // val toolbar: Toolbar = findViewById(R.id.toolbar)
        // setSupportActionBar(toolbar)
 
-        loadFragment(fragment_home())
+        loadFragment(fragment_home_cittadino())
         val x = findViewById(R.id.bottomNav) as BottomNavigationView
         x.setOnNavigationItemReselectedListener {
             when (it.itemId) {
                 R.id.home -> {
-                    loadFragment(fragment_home())
+                    loadFragment(fragment_home_cittadino())
                     return@setOnNavigationItemReselectedListener
                 }
                 R.id.profilo -> {
@@ -75,9 +76,9 @@ class HomeCittadino : AppCompatActivity() {
             }
             R.id.MENU_2 -> {
                 Toast.makeText(this, "cliccato menu 2", Toast.LENGTH_LONG).show()
-                val activityIntent = Intent(this, PopUpListAnnouncementActivity::class.java)
-                startActivity(activityIntent)
-                finish()
+                //val activityIntent = Intent(this,PopUpListAnnouncementActivity::class.java)
+                //startActivity(activityIntent)
+                //finish()
 
             }
             R.id.MENU_3 -> {
