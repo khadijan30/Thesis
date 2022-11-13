@@ -3,29 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/froli/Documents/HereforU-161022/Thesis/app/src/main/res/drawable/button.xml" value="0.127" />
-        <entry key="..\:/Users/froli/Documents/HereforU-161022/Thesis/app/src/main/res/drawable/button_enabled.xml" value="0.127" />
-        <entry key="..\:/Users/froli/Documents/HereforU-161022/Thesis/app/src/main/res/drawable/button_pressed.xml" value="0.127" />
-        <entry key="..\:/Users/froli/Documents/HereforU-161022/Thesis/app/src/main/res/layout/activity_announcement.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/froli/Documents/HereforU-161022/Thesis/app/src/main/res/layout/activity_annuncio_medico.xml" value="0.1" />
-        <entry key="..\:/Users/froli/Documents/HereforU-161022/Thesis/app/src/main/res/layout/activity_annuncio_medico2.xml" value="0.25" />
-        <entry key="..\:/Users/froli/Documents/HereforU-161022/Thesis/app/src/main/res/layout/activity_home_cittadino.xml" value="0.1" />
-        <entry key="..\:/Users/froli/Documents/HereforU-161022/Thesis/app/src/main/res/layout/activity_home_medico.xml" value="0.1" />
-        <entry key="..\:/Users/froli/Documents/HereforU-161022/Thesis/app/src/main/res/layout/activity_intro.xml" value="0.1" />
-        <entry key="..\:/Users/froli/Documents/HereforU-161022/Thesis/app/src/main/res/layout/activity_listview_announcement.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/froli/Documents/HereforU-161022/Thesis/app/src/main/res/layout/activity_login.xml" value="0.1" />
-        <entry key="..\:/Users/froli/Documents/HereforU-161022/Thesis/app/src/main/res/layout/activity_registrazione_cittadino.xml" value="0.1983695652173913" />
-        <entry key="..\:/Users/froli/Documents/HereforU-161022/Thesis/app/src/main/res/layout/activity_registrazione_medico.xml" value="0.1" />
-        <entry key="..\:/Users/froli/Documents/HereforU-161022/Thesis/app/src/main/res/layout/activity_user_profile.xml" value="0.22" />
-        <entry key="..\:/Users/froli/Documents/HereforU-161022/Thesis/app/src/main/res/layout/app_bar_main.xml" value="0.17527173913043478" />
-        <entry key="..\:/Users/froli/Documents/HereforU-161022/Thesis/app/src/main/res/layout/content_main.xml" value="0.17527173913043478" />
-        <entry key="..\:/Users/froli/Documents/HereforU-161022/Thesis/app/src/main/res/layout/fragment_home.xml" value="0.20588235294117646" />
-        <entry key="..\:/Users/froli/Documents/HereforU-161022/Thesis/app/src/main/res/layout/fragment_notifiche.xml" value="0.19610507246376813" />
-        <entry key="..\:/Users/froli/Documents/HereforU-161022/Thesis/app/src/main/res/layout/fragment_profilo.xml" value="0.18" />
-        <entry key="..\:/Users/froli/Documents/HereforU-161022/Thesis/app/src/main/res/layout/showcase_listview_item.xml" value="0.1" />
-        <entry key="..\:/Users/froli/Documents/HereforU-161022/Thesis/app/src/main/res/layout/testprova.xml" value="0.1" />
-        <entry key="..\:/Users/froli/Documents/HereforU-161022/Thesis/app/src/main/res/menu/menu_cittadino.xml" value="0.10833333333333334" />
-        <entry key="..\:/Users/froli/Documents/HereforU-161022/Thesis/app/src/main/res/menu/menu_medico.xml" value="0.10833333333333334" />
+        <entry key="..\:/Users/khadi/Desktop/Thesis/Thesis/app/src/main/res/layout/activity_annuncio_medico2.xml" value="0.125" />
         <entry key="..\:/Users/khadi/Desktop/Thesis/Thesis/app/src/main/res/layout/activity_home_cittadino.xml" value="0.15416666666666667" />
         <entry key="..\:/Users/khadi/Desktop/Thesis/Thesis/app/src/main/res/layout/activity_login.xml" value="0.17074275362318841" />
         <entry key="..\:/Users/khadi/Desktop/Thesis/Thesis/app/src/main/res/layout/activity_registrayion.xml" value="0.25" />
@@ -34,11 +12,13 @@
         <entry key="..\:/Users/khadi/Desktop/Thesis/Thesis/app/src/main/res/layout/activity_user_profile.xml" value="0.17074275362318841" />
         <entry key="..\:/Users/khadi/Desktop/Thesis/Thesis/app/src/main/res/layout/fragment_blank.xml" value="0.15416666666666667" />
         <entry key="..\:/Users/khadi/Desktop/Thesis/Thesis/app/src/main/res/layout/fragment_home.xml" value="0.109375" />
-        <entry key="..\:/Users/khadi/Desktop/Thesis/Thesis/app/src/main/res/layout/fragment_profilo.xml" value="0.25" />
+        <entry key="..\:/Users/khadi/Desktop/Thesis/Thesis/app/src/main/res/layout/fragment_notifiche.xml" value="0.125" />
+        <entry key="..\:/Users/khadi/Desktop/Thesis/Thesis/app/src/main/res/layout/fragment_profilo.xml" value="0.22" />
+        <entry key="..\:/Users/khadi/Desktop/Thesis/Thesis/app/src/main/res/layout/frgament_home_cittadino.xml" value="0.12395833333333334" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
