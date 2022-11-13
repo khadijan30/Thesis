@@ -9,7 +9,8 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.hereforu.R
 import com.example.hereforu.ui.ProfiloFragment
-import com.example.hereforu.ui.fragment_home
+import com.example.hereforu.ui.fragment_home_medico
+
 import com.example.hereforu.ui.fragment_notifiche
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
@@ -18,12 +19,12 @@ class HomeMedico : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_medico)
-        loadFragment(fragment_home())
+        loadFragment(fragment_home_medico())
         val x = findViewById(R.id.bottomNav) as BottomNavigationView
         x.setOnNavigationItemReselectedListener {
             when (it.itemId) {
                 R.id.home -> {
-                    loadFragment(fragment_home())
+                    loadFragment(fragment_home_medico())
                     return@setOnNavigationItemReselectedListener
                 }
                 R.id.profilo -> {
