@@ -61,7 +61,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     implementation 'com.squareup.picasso:picasso:2.5.2'
     implementation 'com.balysv:material-ripple:1.0.2'
-
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
     //lottie library dependencies
     def lottieVersion = "3.4.0"
     implementation "com.airbnb.android:lottie:$lottieVersion"
