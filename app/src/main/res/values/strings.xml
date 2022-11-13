@@ -27,4 +27,19 @@
     <string name="menu_slideshow">Slideshow</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="campo_array">
+        <item>PSICOLOGIA DEL LAVORO</item>
+        <item>PSICOLOGIA DEL CONSUMATORE</item>
+        <item>PSICOLOGIA DEL CLINICA</item>
+        <item>SESSUOLOGIA</item>
+        <item>NEUROPSICOLOGIA</item>
+        <item>PSICOLOGIA FORENSE</item>
+        <item>PSICOLOGIA DELLO SVILUPPO</item>
+        <item>PSICOLOGIA DELLO SPORT</item>
+        <item>PSICOLOGIA SOCIALE</item>
+        <item>PSICOLOGIA DI COMUNITA</item>
+        <item>PSICOLOGIA DI COPPIA</item>
+        <item>PSICOLOGIA SPERIMENTALE</item>
+    </string-array>
 </resources>

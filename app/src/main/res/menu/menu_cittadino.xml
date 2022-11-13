@@ -8,7 +8,7 @@
     app:showAsAction="ifRoom" />
     <item
         android:id="@+id/MENU_2"
-        android:title="I miei appuntamento"/>
+        android:title="Appuntamenti"/>
 
     <item
         android:id="@+id/MENU_3"

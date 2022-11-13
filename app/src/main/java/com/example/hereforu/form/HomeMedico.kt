@@ -6,14 +6,45 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import com.example.hereforu.R
+import com.example.hereforu.ui.ProfiloFragment
+import com.example.hereforu.ui.fragment_home
+import com.example.hereforu.ui.fragment_notifiche
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 
 class HomeMedico : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_medico)
+        loadFragment(fragment_home())
+        val x = findViewById(R.id.bottomNav) as BottomNavigationView
+        x.setOnNavigationItemReselectedListener {
+            when (it.itemId) {
+                R.id.home -> {
+                    loadFragment(fragment_home())
+                    return@setOnNavigationItemReselectedListener
+                }
+                R.id.profilo -> {
+                    loadFragment(ProfiloFragment())
+                    return@setOnNavigationItemReselectedListener
+                }
+                R.id.notifiche -> {
+                    loadFragment(fragment_notifiche())
+                    return@setOnNavigationItemReselectedListener
+                }
+            }
+        }
     }
+    private  fun loadFragment(fragment: Fragment){
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.container,fragment)
+        transaction.addToBackStack(null)
+        transaction.commit()
+    }
+
+
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflater = menuInflater
@@ -33,8 +64,10 @@ class HomeMedico : AppCompatActivity() {
 
             }
             R.id.MENU_2 -> {
-                Toast.makeText(this, "cliccato menu 2", Toast.LENGTH_LONG).show()
-
+                Toast.makeText(this, "cliccato menu Crea appuntamento", Toast.LENGTH_LONG).show()
+                val activityIntent = Intent(this, AnnuncioMedico::class.java)
+                startActivity(activityIntent)
+                finish()
             }
             R.id.MENU_3 -> {
                 Toast.makeText(this, "cliccato menu 3", Toast.LENGTH_LONG).show()
