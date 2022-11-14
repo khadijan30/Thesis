@@ -11,6 +11,7 @@
         android:layout_height="26dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
         android:paddingTop="4dp"
         android:text="Nome Studio"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,9 +20,8 @@
     <EditText
         android:id="@+id/Nomestudio"
         android:layout_width="0dp"
-        android:layout_height="30dp"
+        android:layout_height="42dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
         android:autofillHints=""
         android:ems="10"
@@ -29,8 +29,9 @@
         android:paddingStart="6dp"
         android:paddingEnd="6dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/Nome"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Nome" />
 
     <TextView
         android:id="@+id/Campo"
@@ -46,14 +47,13 @@
     <Spinner
         android:id="@+id/CampoMedico"
         android:layout_width="0dp"
+        android:layout_marginEnd="24dp"
         android:layout_height="30dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="24dp"
         android:entries="@array/campo_array"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/Nome"
-        app:layout_constraintTop_toBottomOf="@+id/Nomestudio" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Campo" />
 
     <TextView
         android:id="@+id/createGradeTextView"
@@ -66,17 +66,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/CampoMedico" />
 
-    <EditText
+    <Button
         android:id="@+id/orario"
         android:layout_width="0dp"
-        android:layout_height="30dp"
+        android:layout_height="42dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
         android:layout_marginEnd="24dp"
         android:inputType="datetime"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/Nome"
-        app:layout_constraintTop_toBottomOf="@+id/CampoMedico" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/createGradeTextView" />
 
     <TextView
         android:id="@+id/createProfessorTextView"
@@ -92,18 +91,17 @@
     <EditText
         android:id="@+id/Indicazioni"
         android:layout_width="0dp"
-        android:layout_height="30dp"
+        android:layout_height="42dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="24dp"
         android:autofillHints=""
+        android:layout_marginEnd="24dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:paddingStart="6dp"
         android:paddingEnd="6dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/Nome"
-        app:layout_constraintTop_toBottomOf="@+id/orario" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/createProfessorTextView" />
 
     <EditText
         android:id="@+id/createDescriptionEditText"

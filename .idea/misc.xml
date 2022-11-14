@@ -3,18 +3,23 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/khadi/Desktop/Thesis/Thesis/app/src/main/res/layout/activity_annuncio_medico2.xml" value="0.125" />
+        <entry key="..\:/Users/khadi/Desktop/Thesis/Thesis/app/src/main/res/layout/activity_announcement.xml" value="0.1" />
+        <entry key="..\:/Users/khadi/Desktop/Thesis/Thesis/app/src/main/res/layout/activity_annuncio_medico2.xml" value="0.33" />
         <entry key="..\:/Users/khadi/Desktop/Thesis/Thesis/app/src/main/res/layout/activity_home_cittadino.xml" value="0.15416666666666667" />
+        <entry key="..\:/Users/khadi/Desktop/Thesis/Thesis/app/src/main/res/layout/activity_listview_announcement.xml" value="0.1" />
         <entry key="..\:/Users/khadi/Desktop/Thesis/Thesis/app/src/main/res/layout/activity_login.xml" value="0.17074275362318841" />
         <entry key="..\:/Users/khadi/Desktop/Thesis/Thesis/app/src/main/res/layout/activity_registrayion.xml" value="0.25" />
         <entry key="..\:/Users/khadi/Desktop/Thesis/Thesis/app/src/main/res/layout/activity_registrazione_cittadino.xml" value="0.33" />
         <entry key="..\:/Users/khadi/Desktop/Thesis/Thesis/app/src/main/res/layout/activity_registrazione_medico.xml" value="0.1515625" />
         <entry key="..\:/Users/khadi/Desktop/Thesis/Thesis/app/src/main/res/layout/activity_user_profile.xml" value="0.17074275362318841" />
+        <entry key="..\:/Users/khadi/Desktop/Thesis/Thesis/app/src/main/res/layout/date_time_picker.xml" value="0.1" />
         <entry key="..\:/Users/khadi/Desktop/Thesis/Thesis/app/src/main/res/layout/fragment_blank.xml" value="0.15416666666666667" />
         <entry key="..\:/Users/khadi/Desktop/Thesis/Thesis/app/src/main/res/layout/fragment_home.xml" value="0.109375" />
+        <entry key="..\:/Users/khadi/Desktop/Thesis/Thesis/app/src/main/res/layout/fragment_home_medico.xml" value="0.17604166666666668" />
         <entry key="..\:/Users/khadi/Desktop/Thesis/Thesis/app/src/main/res/layout/fragment_notifiche.xml" value="0.125" />
         <entry key="..\:/Users/khadi/Desktop/Thesis/Thesis/app/src/main/res/layout/fragment_profilo.xml" value="0.22" />
         <entry key="..\:/Users/khadi/Desktop/Thesis/Thesis/app/src/main/res/layout/frgament_home_cittadino.xml" value="0.12395833333333334" />
+        <entry key="..\:/Users/khadi/Desktop/Thesis/Thesis/app/src/main/res/layout/showcase_listview_item.xml" value="0.1" />
       </map>
     </option>
   </component>

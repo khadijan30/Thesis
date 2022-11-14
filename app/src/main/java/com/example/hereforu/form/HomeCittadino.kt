@@ -12,7 +12,6 @@ import androidx.fragment.app.Fragment
 import com.example.hereforu.R
 import com.example.hereforu.ui.ProfiloFragment
 import com.example.hereforu.ui.fragment_home_cittadino
-import com.example.hereforu.ui.fragment_home_medico
 import com.example.hereforu.ui.fragment_notifiche
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
@@ -24,8 +23,8 @@ class HomeCittadino : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_cittadino)
-       // val toolbar: Toolbar = findViewById(R.id.toolbar)
-       // setSupportActionBar(toolbar)
+        // val toolbar: Toolbar = findViewById(R.id.toolbar)
+        // setSupportActionBar(toolbar)
 
         loadFragment(fragment_home_cittadino())
         val x = findViewById(R.id.bottomNav) as BottomNavigationView
@@ -53,10 +52,6 @@ class HomeCittadino : AppCompatActivity() {
         transaction.commit()
     }
 
-
-
-
-
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflater = menuInflater
         inflater.inflate(R.menu.menu_cittadino, menu)
@@ -76,9 +71,9 @@ class HomeCittadino : AppCompatActivity() {
             }
             R.id.MENU_2 -> {
                 Toast.makeText(this, "cliccato menu 2", Toast.LENGTH_LONG).show()
-                //val activityIntent = Intent(this,PopUpListAnnouncementActivity::class.java)
-                //startActivity(activityIntent)
-                //finish()
+                val activityIntent = Intent(this, PopUpListAnnouncementActivity::class.java)
+                startActivity(activityIntent)
+                finish()
 
             }
             R.id.MENU_3 -> {
@@ -99,4 +94,5 @@ class HomeCittadino : AppCompatActivity() {
         }
         return false
     }
+
 }
